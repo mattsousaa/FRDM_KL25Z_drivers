@@ -14,7 +14,7 @@ Gpio::Gpio(GPIO_Type *gpio, uint8_t pin){
 
 void Gpio::setClock(){
 
-	if(this->gpio == GPIOA)  		set_bit(SIM -> SCGC5, 9); /* Habilita o clock gate no gpioA */
+	if(this->gpio == GPIOA)  	set_bit(SIM -> SCGC5, 9); /* Habilita o clock gate no gpioA */
 
 	else if(this->gpio == GPIOB)  	set_bit(SIM -> SCGC5, 10); /* Habilita o clock gate no gpioB */
 
