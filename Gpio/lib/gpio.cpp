@@ -1,3 +1,10 @@
+/*
+ * gpio.h
+ *
+ *  Created on: 5 de mar de 2019
+ *      Author: Mateus Sousa
+ */
+
 #include "gpio.h"
 
 Gpio::Gpio(GPIO_Type *gpio, uint8_t pin){
