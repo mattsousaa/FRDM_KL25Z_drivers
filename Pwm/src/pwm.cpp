@@ -5,14 +5,7 @@
  *      Author: Mateus Sousa
  */
 
-#include <stdio.h>
 #include "pwm.h"
-#include "board.h"
-#include "peripherals.h"
-#include "pin_mux.h"
-#include "clock_config.h"
-#include "MKL25Z4.h"
-#include "fsl_debug_console.h"
 
 /*
  * f_pwm = PWM signal frequency
@@ -98,7 +91,7 @@ bool Pwm::pwmInit(){
 
 }
 
-bool Pwm::pwmChInit(uint8_t pin, uint8_t mode){
+bool Pwm::setMod(uint8_t pin, uint8_t mode){
 
 	if(this->tpm == TPM0){
 	/*
@@ -148,7 +141,6 @@ bool Pwm::pwmChInit(uint8_t pin, uint8_t mode){
 		else if(this->gpio == GPIOD){
 			if(this->channel <= 5){
 				if(pin <= 5){
-					SIM->SCGC5 |= SIM_SCGC5_PORTB_MASK;
 					SIM->SCGC5 |= SIM_SCGC5_PORTD_MASK;
 					PORTD->PCR[pin] = PORT_PCR_MUX(3);
 				} else return false;
@@ -256,7 +248,7 @@ bool Pwm::pwmChInit(uint8_t pin, uint8_t mode){
 		} else return false;
 	} else return false;
 
-	if(this->tpm == TPM0)	  this->tpm->CONTROLS[channel].CnSC |= mode;
+	if(this->tpm == TPM0)	   this->tpm->CONTROLS[channel].CnSC |= mode;
 	else if(this->tpm == TPM1) this->tpm->CONTROLS[channel].CnSC |= mode;
 	else if(this->tpm == TPM2) this->tpm->CONTROLS[channel].CnSC |= mode;
 
@@ -264,7 +256,7 @@ bool Pwm::pwmChInit(uint8_t pin, uint8_t mode){
 
 }
 
-void Pwm::pwmCnV(uint16_t value){
+void Pwm::setDuty(uint16_t value){
 
 	if(this->tpm == TPM0){
 		this->tpm->CONTROLS[this->channel].CnV = value;
