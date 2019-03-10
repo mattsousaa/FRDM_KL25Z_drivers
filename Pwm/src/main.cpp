@@ -27,15 +27,15 @@ int main(void){
 	/* Initializes TPM */
 	led.pwmInit();
 	/* Initializes I / O with the PWM signal */
-	led.pwm_tpm_Ch_Init(19, TPM_PWM_H);
+	led.pwmChInit(19, TPM_PWM_H);
 	// Set value Duty Cycle
-	led.pwm_tpm_CnV(x);
+	led.pwmCnV(x);
 
 	while(1){
 
 		for(i=0;i<10000;i++);
 		// Set valor Duty Cycle
-		led.pwm_tpm_CnV(x);
+		led.pwmCnV(x);
 		x++;
 	}
 
