@@ -9,7 +9,7 @@
 //#include "system_MKL25Z4.h"
 
 #define TPM_MODULE 3276
-#define DUTY_MIN 1000
+#define DUTY_MIN 1
 #define DUTY_MAX 325
 
 uint16_t i = 0;
@@ -30,7 +30,7 @@ int main(void){
 
 	while(1){
 
-		for(i = 0; i < 1000; i++);
+		for(i = 0; i < 2000; i++);
 		ledred.setDuty(x);
 		x++;
 
