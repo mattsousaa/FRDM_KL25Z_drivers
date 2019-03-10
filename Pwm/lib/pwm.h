@@ -79,8 +79,8 @@ public:
 	Pwm(TPM_Type *tpm, GPIO_Type *gpio, clk_src_t clk, uint16_t module, clk_count_t clock_mode, pre_scale_t ps, count_mode_t ct_mode,
 		channel_selection_t channel);
 	bool pwmInit();
-	bool pwm_tpm_Ch_Init(uint8_t pin, uint8_t mode);
-	void pwm_tpm_CnV(uint16_t value);
+	bool pwmChInit(uint8_t pin, uint8_t mode);
+	void pwmCnV(uint16_t value);
 };
 
 #endif /* PWM_H_ */
