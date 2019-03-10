@@ -6,37 +6,37 @@
  */
 
 #include "pwm.h"
-#include "MKL25Z4.h"
 //#include "system_MKL25Z4.h"
 
-#define TPM_MODULE 3275
-#define DUTY_MIN 165
-#define DUTY_MAX 999
+#define TPM_MODULE 3276
+#define DUTY_MIN 1000
+#define DUTY_MAX 325
 
 uint16_t i = 0;
-uint16_t x = 0;
-
-
+uint32_t x = 0;
 
 int main(void){
 
 	x = DUTY_MIN;
 
-	Pwm led(TPM2, GPIOB, TPM_PLLFLL, TPM_MODULE, TPM_CLK, PS_128, EDGE_PWM, CHANNEL1);
+	Pwm ledred(TPM2, GPIOB, TPM_PLLFLL, TPM_MODULE, TPM_CLK, PS_128, EDGE_PWM, CHANNEL0);
 
 	/* Initializes TPM */
-	led.pwmInit();
+	ledred.pwmInit();
 	/* Initializes I / O with the PWM signal */
-	led.pwmChInit(19, TPM_PWM_H);
+	ledred.setMod(18, TPM_PWM_H);
 	// Set value Duty Cycle
-	led.pwmCnV(x);
+	ledred.setDuty(x);
 
 	while(1){
 
-		for(i=0;i<10000;i++);
-		// Set valor Duty Cycle
-		led.pwmCnV(x);
+		for(i = 0; i < 1000; i++);
+		ledred.setDuty(x);
 		x++;
+
+		if(x >= TPM_MODULE){
+			x = DUTY_MIN;
+		}
 	}
 
 	return 0;
