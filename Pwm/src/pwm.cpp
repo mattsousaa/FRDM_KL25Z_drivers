@@ -98,7 +98,7 @@ bool Pwm::pwmInit(){
 
 }
 
-bool Pwm::pwm_tpm_Ch_Init(uint8_t pin, uint8_t mode){
+bool Pwm::pwmChInit(uint8_t pin, uint8_t mode){
 
 	if(this->tpm == TPM0){
 	/*
@@ -264,7 +264,7 @@ bool Pwm::pwm_tpm_Ch_Init(uint8_t pin, uint8_t mode){
 
 }
 
-void Pwm::pwm_tpm_CnV(uint16_t value){
+void Pwm::pwmCnV(uint16_t value){
 
 	if(this->tpm == TPM0){
 		this->tpm->CONTROLS[this->channel].CnV = value;
