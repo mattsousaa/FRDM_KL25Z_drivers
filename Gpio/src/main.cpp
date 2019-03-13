@@ -42,9 +42,7 @@
 
 int main(void) {
 
-	Gpio led(GPIOB, 18);
-
-	led.setClock();
+	Gpio led(GPIOB, 19);
 
 	led.setDirection(OUTPUT);
 
