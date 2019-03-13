@@ -12,23 +12,10 @@ Gpio::Gpio(GPIO_Type *gpio, uint8_t pin){
 	this->pin = pin;
 }
 
-void Gpio::setClock(){
-
-	if(this->gpio == GPIOA)  		set_bit(SIM -> SCGC5, 9); /* Habilita o clock gate no gpioA */
-
-	else if(this->gpio == GPIOB)  	set_bit(SIM -> SCGC5, 10); /* Habilita o clock gate no gpioB */
-
-	else if(this->gpio == GPIOC)	set_bit(SIM -> SCGC5, 11); /* Habilita o clock gate no gpioC */
-
-	else if(this->gpio == GPIOD)	set_bit(SIM -> SCGC5, 12); /* Habilita o clock gate no gpioD */
-
-	else if(this->gpio == GPIOE)	set_bit(SIM -> SCGC5, 13); /* Habilita o clock gate no gpioE */
-
-}
-
 void Gpio::setDirection(gpio_direction_t dir){
 
 	if(this->gpio == GPIOA){
+		set_bit(SIM -> SCGC5, 9); /* Habilita o clock gate no gpioA */
 		set_bit(PORTA->PCR[this->pin], 8); /* Configura o pino como GPIO */
 		if(dir == INPUT) /* INPUT */
 			clr_bit(this->gpio->PDDR, this->pin);
@@ -37,6 +24,7 @@ void Gpio::setDirection(gpio_direction_t dir){
 	}
 
 	else if(this->gpio == GPIOB){
+		set_bit(SIM -> SCGC5, 10); /* Habilita o clock gate no gpioB */
 		set_bit(PORTB->PCR[this->pin], 8); /* Configura o pino como GPIO */
 		if(dir == INPUT) /* INPUT */
 			clr_bit(this->gpio->PDDR, this->pin);
@@ -45,6 +33,7 @@ void Gpio::setDirection(gpio_direction_t dir){
 	}
 
 	else if(this->gpio == GPIOC){
+		set_bit(SIM -> SCGC5, 11); /* Habilita o clock gate no gpioC */
 		set_bit(PORTC->PCR[this->pin], 8); /* Configura o pino como GPIO */
 		if(dir == INPUT) /* INPUT */
 			clr_bit(this->gpio->PDDR, this->pin);
@@ -53,6 +42,7 @@ void Gpio::setDirection(gpio_direction_t dir){
 	}
 
 	else if(this->gpio == GPIOD){
+		set_bit(SIM -> SCGC5, 12); /* Habilita o clock gate no gpioD */
 		set_bit(PORTD->PCR[this->pin], 8); /* Configura o pino como GPIO */
 		if(dir == INPUT) /* INPUT */
 			clr_bit(this->gpio->PDDR, this->pin);
@@ -61,6 +51,7 @@ void Gpio::setDirection(gpio_direction_t dir){
 	}
 
 	else if(this->gpio == GPIOE){
+		set_bit(SIM -> SCGC5, 13); /* Habilita o clock gate no gpioE */
 		set_bit(PORTE->PCR[this->pin], 8); /* Configura o pino como GPIO */
 		if(dir == INPUT) /* INPUT */
 			clr_bit(this->gpio->PDDR, this->pin);
