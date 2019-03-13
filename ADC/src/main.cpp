@@ -9,9 +9,6 @@ int main(void){
 	Gpio ledRed(GPIOB, 18);
 	Gpio ledGreen(GPIOB, 19);
 
-	ledRed.setClock();
-	ledGreen.setClock();
-
 	ledRed.setDirection(OUTPUT);
 	ledGreen.setDirection(OUTPUT);
 
