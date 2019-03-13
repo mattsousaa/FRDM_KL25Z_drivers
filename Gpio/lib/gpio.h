@@ -35,7 +35,6 @@ private:
 
 public:
 	Gpio(GPIO_Type *gpio, uint8_t pin);
-	void setClock();
 	void setDirection(gpio_direction_t dir);
 	void setValue(gpio_value_t value);
 	void setPullUp();
